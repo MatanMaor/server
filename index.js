@@ -2,7 +2,18 @@ const express = require("express");
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 
+const productRouter = require("./Routers/productRouter");
+const reviewRouter = require("./Routers/reviewRouters");
+const userRouter = require("./Routers/userRouter");
+const authRouter = require("./Routers/authRouther");
+
 const app = express();
+
+app.use(express.json());
+app.use("/auth", authRouter);
+app.use("/product", productRouter);
+app.use("/review", reviewRouter);
+app.use("/user", userRouter);
 
 dotenv.config({ path: ".env" });
 
