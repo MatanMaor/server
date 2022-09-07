@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 
 const Product = require("../models/productModel");
+const Review = require("../models/reviewModel");
 const { sendRes } = require("../helpers/sendRes");
 const { makeFilterObject } = require("../helpers/makeFilterObject");
 
@@ -88,3 +89,4 @@ module.exports.updateProduct = async (req, res) => {
     sendRes(res, error, 400, true);
   }
 };
+

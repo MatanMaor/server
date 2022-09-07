@@ -22,3 +22,47 @@ module.exports.getUserById = async (req, res) => {
     sendRes(res, err, 400, true);
   }
 };
+
+module.exports.deleteUserById = async (req, res) => {
+  const { id } = req.body;
+  try {
+    await User.findByIdAndDelete(id);
+    sendRes(res, "deleted successfully", 200);
+  } catch (err) {
+    sendRes(res, err, 400, true);
+  }
+};
+
+module.exports.updateRole = async (req, res) => {
+  const { id, role } = req.body;
+  try {
+    const user = await User.findByIdAndUpdate(
+      id,
+      { role },
+      {
+        new: true,
+        runValidators: true,
+      }
+    );
+    sendRes(res, user, 200);
+  } catch (err) {
+    sendRes(res, err, 400, true);
+  }
+};
+
+module.exports.updateUser = async (req, res) => {
+  const { id, userName, email } = req.body;
+  try {
+    const user = await User.findByIdAndUpdate(
+      id,
+      { userName, email },
+      {
+        new: true,
+        runValidators: true,
+      }
+    );
+    sendRes(res, user, 200);
+  } catch (err) {
+    sendRes(res, err, 400, true);
+  }
+};
