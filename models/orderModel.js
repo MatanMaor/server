@@ -1,7 +1,9 @@
 const mongoose = require("mongoose");
+
 const productOrder = new mongoose.Schema({
-  product: { type: moongoose.Schema.ObjectId, ref: "products", required: true },
-  amount: { type: Number, required: ture },
+  product: { type: mongoose.Schema.ObjectId, ref: "Product" },
+  amount: { type: Number, required: true },
+  user: { type: mongoose.Schema.ObjectId, ref: "user" },
 });
 
 const orderSchema = new mongoose.Schema(
@@ -16,7 +18,7 @@ const orderSchema = new mongoose.Schema(
       {
         product: {
           type: mongoose.Schema.ObjectId,
-          ref: "products",
+          ref: "Product",
           required: true,
         },
         amount: {
@@ -39,3 +41,9 @@ const orderSchema = new mongoose.Schema(
     toObject: { virtuals: true },
   }
 );
+
+
+
+const Order = mongoose.model("orders", orderSchema);
+
+module.exports = Order;
