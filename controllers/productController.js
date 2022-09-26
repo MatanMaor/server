@@ -21,14 +21,14 @@ module.exports.createNewProduct = async (req, res) => {
   }
 };
 
-module.exports.getAllItems = async (req, res) => {
-  try {
-    const products = await Product.find();
-    sendRes(res, products, 201);
-  } catch {
-    sendRes(res, err, 400, true);
-  }
-};
+// module.exports.getAllItems = async (req, res) => {
+//   try {
+//     const products = await Product.find();
+//     sendRes(res, products, 201);
+//   } catch {
+//     sendRes(res, err, 400, true);
+//   }
+// };
 
 module.exports.getAllProducts = async (req, res) => {
   const filterObject = makeFilterObject(req.query);

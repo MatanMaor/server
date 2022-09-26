@@ -1,6 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
+const cookieParser = require("cookie-parser");
 
 const productRouter = require("./Routers/productRouter");
 const reviewRouter = require("./Routers/reviewRouters");
@@ -11,6 +12,8 @@ const orderRouter = require("./Routers/ordersRouther");
 const app = express();
 
 app.use(express.json());
+app.use(cookieParser()); // create req.cookie
+
 app.use("/auth", authRouter);
 app.use("/product", productRouter);
 app.use("/review", reviewRouter);

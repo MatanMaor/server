@@ -1,6 +1,12 @@
 const express = require("express");
 const userController = require("../controllers/userController");
+const authController = require("../controllers/authController")
+
+const { roles } = require("../controllers/authController");
+
 const router = express.Router();
+
+router.use(authController.authenticateUser, authController.restrics(roles.admin))
 
 router
   .route("/")
